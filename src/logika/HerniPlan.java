@@ -35,19 +35,19 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor tvojeCela = new Prostor("tvojeCela","Cela, ve které jsi byl uvězněn");
-        Prostor svoboda = new Prostor(CILOVY_PROSTOR, "svoboda");
-        Prostor chodbaPodzemi = new Prostor("chodbaPodzemi","Chodba v podzemní části vězení");
-        Prostor prazdnaCela = new Prostor("prazdnaCela","Cela, ve které není žádný vězeň");
-        Prostor celaStarehoVezne = new Prostor("celaStarehoVezne","Cela, ve které žije starý vězeň");
-        Prostor zamcenaCela = new Prostor("zamcenaCela","Zamčená cela");
-        Prostor tunel = new Prostor("tunel","Tunel, který tě dovede na svobodu");
-        Prostor chodbaPrizemi = new Prostor("chodbaPrizemi","Chodba v přízemí vězení");
-        Prostor umyvarna = new Prostor("umyvarna","Umývárna pro vězně");
-        Prostor jidelna = new Prostor("jidelna","Jídelna pro hlídače");
-        Prostor osetrovna = new Prostor("osetrovna","Vězeňská ošetřovna, najdeš zde léky");
-        Prostor straznice = new Prostor("straznice","Strážnice vězení, kde sedí hlídač");
-        Prostor nadvori = new Prostor("nadvori","Venkovní, oplocená část vězení");
+        Prostor tvojeCela = new Prostor("tvojeCela","Cela, ve které jsi byl uvězněn",110,50);
+        Prostor svoboda = new Prostor(CILOVY_PROSTOR, "svoboda",20,50);
+        Prostor chodbaPodzemi = new Prostor("chodbaPodzemi","Chodba v podzemní části vězení",30,30);
+        Prostor prazdnaCela = new Prostor("prazdnaCela","Cela, ve které není žádný vězeň",40,80);
+        Prostor celaStarehoVezne = new Prostor("celaStarehoVezne","Cela, ve které žije starý vězeň",60,90);
+        Prostor zamcenaCela = new Prostor("zamcenaCela","Zamčená cela",20,80);
+        Prostor tunel = new Prostor("tunel","Tunel, který tě dovede na svobodu",60,90);
+        Prostor chodbaPrizemi = new Prostor("chodbaPrizemi","Chodba v přízemí vězení",40,70);
+        Prostor umyvarna = new Prostor("umyvarna","Umývárna pro vězně",90,50);
+        Prostor jidelna = new Prostor("jidelna","Jídelna pro hlídače",50,30);
+        Prostor osetrovna = new Prostor("osetrovna","Vězeňská ošetřovna, najdeš zde léky",40,40);
+        Prostor straznice = new Prostor("straznice","Strážnice vězení, kde sedí hlídač",50,50);
+        Prostor nadvori = new Prostor("nadvori","Venkovní, oplocená část vězení",60,70);
      
         // přiřazují se průchody mezi prostory (sousedící prostory)
         tvojeCela.setVychod(chodbaPodzemi);
