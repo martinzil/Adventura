@@ -5,6 +5,7 @@
  */
 package main;
 
+import GUI.Mapa;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
@@ -14,8 +15,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -32,9 +36,14 @@ public class Main extends Application {
     private IHra hra;
     private TextField zadejPrikazTextArea;
     
+    private Mapa mapa;
+    
+    
     @Override
     public void start(Stage primaryStage) {
         hra = new Hra();
+        
+        mapa = new Mapa(Hra);
         BorderPane borderPane = new BorderPane();
          
             
@@ -65,6 +74,9 @@ public class Main extends Application {
         FlowPane obrazekFlowPane = new FlowPane();
         obrazekFlowPane.setPrefSize(200, 200);
         ImageView obrazekImageView = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.jpg"),200,200,false,true));
+        
+        Circle tecka = new Circle(10, Paint.valueOf("red"));
+        
         obrazekFlowPane.setAlignment(Pos.CENTER);
         obrazekFlowPane.getChildren().add(obrazekImageView);
     
@@ -73,9 +85,9 @@ public class Main extends Application {
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
         dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea);
-        borderPane.setBottom(dolniLista);
+       
         
-        borderPane.setLeft(obrazekFlowPane);
+        borderPane.setLeft(mapa);
         borderPane.setBottom(dolniLista);
         Scene scene = new Scene(borderPane, 650, 350);
         primaryStage.setTitle("Adventura!");
@@ -84,6 +96,21 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         zadejPrikazTextArea.requestFocus();
+    }
+    
+    private AnchorPane nastaveniMapy(){
+        AnchorPane obrazekPane = new AnchorPane();
+        
+        ImageView obrazekImageView = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.jpg"),200,200,false,true));
+        
+        Circle tecka = new Circle(10, Paint.valueOf("red"));
+        
+        obrazekFlowPane.setTopAnchor(tecka, 25.0);
+        obrazekFlowPane.setLeftAnchor(tecka, 100.0);
+            
+        obrazekFlowPane.getChildren().addAll(obrazekImageView, tecka);
+        
+        return obrazekPane;
     }
 
     /**

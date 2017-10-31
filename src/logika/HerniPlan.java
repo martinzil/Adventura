@@ -1,4 +1,8 @@
 package logika;
+
+import utils.Observer;
+import utils.Subject;
+
 /**
  * Třída HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -10,7 +14,7 @@ package logika;
  * @version    9.0
  * @created    leden 2017
  */
-public class HerniPlan {
+public class HerniPlan implements Subject{
     private static final String CILOVY_PROSTOR = "svoboda";
     private Prostor aktualniProstor;
     private Kapsa kapsa;
@@ -150,6 +154,7 @@ public class HerniPlan {
      */
     public void setAktualniProstor(Prostor prostor) {
        aktualniProstor = prostor;
+       notifyObservers();
     }
     
     /**
@@ -208,5 +213,23 @@ public class HerniPlan {
      */
     public boolean isZapaluje() {
         return hori;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+       listObserveru.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+       listObserveru.remove(observer);
+    }
+
+    @Override
+    public void notifyObserver() {
+        for (Observer listObserveruItem : listObserveru) {
+            listObserveruItem.update();
+            
+        }
     }
 }

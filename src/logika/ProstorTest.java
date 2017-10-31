@@ -48,8 +48,8 @@ public class ProstorTest {
      */
     @Test
     public  void testLzeProjit() {
-        Prostor prostor1 = new Prostor("hala", "vstupní hala budovy VŠE na Jižním městě");
-        Prostor prostor2 = new Prostor("bufet", "bufet, kam si můžete zajít na svačinku");
+        Prostor prostor1 = new Prostor("hala", "vstupní hala budovy VŠE na Jižním městě",30,50);
+        Prostor prostor2 = new Prostor("bufet", "bufet, kam si můžete zajít na svačinku",40,20);
         prostor1.setVychod(prostor2);
         prostor2.setVychod(prostor1);
         assertEquals(prostor2, prostor1.vratSousedniProstor("bufet"));
@@ -58,7 +58,7 @@ public class ProstorTest {
     
     @Test
     public void testVeci() {
-        logika.Prostor prostor1 = new logika.Prostor(null, null);
+        logika.Prostor prostor1 = new logika.Prostor(null, null,10,20);
         logika.Vec vec1 = new logika.Vec("a", "popis a", true, true, false, false);
         logika.Vec vec2 = new logika.Vec("b", "popis b", false, true, false, false);
         prostor1.vlozVec(vec1);
@@ -74,8 +74,8 @@ public class ProstorTest {
     @Test
     public void testKlice() {
         Vec klic = new Vec("klic","klic od bufetu", true, true, false, false);
-        Prostor prostor1 = new Prostor("hala", "vstupní hala budovy VŠE na Jižním městě");
-        Prostor prostor2 = new Prostor("bufet", "bufet, kam si můžete zajít na svačinku");
+        Prostor prostor1 = new Prostor("hala", "vstupní hala budovy VŠE na Jižním městě",40,80);
+        Prostor prostor2 = new Prostor("bufet", "bufet, kam si můžete zajít na svačinku",90,10);
         prostor1.setVychod(prostor2);
         prostor2.setVychod(prostor1);
         prostor2.zamknout(true);
@@ -89,7 +89,7 @@ public class ProstorTest {
      */
     public void testPostava()
     {
-        Prostor prostor1 = new Prostor("hala", "vstupní hala budovy VŠE na Jižním městě");
+        Prostor prostor1 = new Prostor("hala", "vstupní hala budovy VŠE na Jižním městě",50,40);
         Postava postava1 = new Postava("student", "Ztracený student");
         prostor1.vlozPostava(postava1);
         assertEquals(postava1, prostor1.najdiPostavu("student"));
